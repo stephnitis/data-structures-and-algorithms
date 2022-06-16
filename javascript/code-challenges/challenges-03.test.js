@@ -58,8 +58,10 @@ Write a function named notInFirstArray that, given two arrays as input, uses fil
 For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
+//https://stackoverflow.com/questions/34901593/how-to-filter-an-array-from-all-elements-of-another-array
+
 const notInFirstArray = (forbiddenValues, arr) => {
-  return arr.filter(nope => forbiddenValues !== nope );
+  return arr.filter(nope => !forbiddenValues.includes(nope) );
 };
 
 /* ------------------------------------------------------------------------------------------------
