@@ -26,7 +26,7 @@ Write a function named addValues that, given an array of numbers as input, uses 
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr) => {
-  // Solution code here...
+  return arr.reduce((currentValue, currentIndex) => currentValue += currentIndex, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ Write a function named addPurchases that, given an array of objects as input, us
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
-  // Solution code here...
+  return arr.reduce((currentValue, currentIndex) => currentValue += currentIndex.purchasePrice, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
