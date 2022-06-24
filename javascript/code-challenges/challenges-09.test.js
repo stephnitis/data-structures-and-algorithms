@@ -9,7 +9,9 @@ using the 'reduce' method.
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
-  // Solution code here...
+  return arr.reduce((previous, current) => {
+    return current > previous ? current : previous
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -60,7 +62,7 @@ HR has asked you to change the data to make it easier to print so that it looks 
 ------------------------------------------------------------------------------------------------ */
 
 const updateNumbers = (obj) => {
-  // Solution code here...
+  return Object.entries(obj).map(entry => entry.join(': '));
 };
 
 
@@ -135,7 +137,17 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
+  let children = 0;
+
+  arr.forEach(person => {
+    if(person.name ===character){
+      Object.keys(person).forEach((key,idx) => {
+        if(key === 'children') children = Object.values(person)[idx].length;
+      });
+    }
+  });
+
+  return children ? true : false;
 
 };
 
