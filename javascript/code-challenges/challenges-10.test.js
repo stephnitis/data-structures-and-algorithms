@@ -46,7 +46,18 @@ return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
   // Solution code here...
+  let totalSum = 0;
+
+  matrix.forEach(nestedArr => { //slower loop
+    nestedArr.forEach(number => { //faster loop
+      totalSum += number;
+    });
+  });
+
+  return totalSum;
 };
+
+// return matrix.flat().reduce((preValue, current) => preVal + current, 0));
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -73,8 +84,16 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
+//   let hourlyTotals = [];
+//   for(let i = 0; i < stores[0].length; i++)
+//     let hourlySum = 0;
+//     for(let j = 0; j < stores.length; j++){
+//       hourlySum += stores[j][i];
+//     }
+//   return hourlyTotals.push(hourlySum);
+// };
 
-};
+// return hourlyTotals;
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -113,8 +132,20 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
+  return arr[2].items[1].quantity;
 };
 
+let treats = 0;
+
+// arr.forEach(object => {
+//   let listArr = obj.items;
+//   listArr.forEach(item => {
+//     if(item.name === 'Treats'){
+//       treats = item.quantity;
+//     }
+//   })
+// })
+// return treats;
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
