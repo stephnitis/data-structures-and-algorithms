@@ -46,8 +46,8 @@ CHALLENGE 3
 Write a function named joinArray that takes an array and joins all of the elements together in one string on a space.
 ------------------------------------------------------------------------------------------------ */
 
-const joinArray = (arr) => {
-  // Solution code here...
+const joinArray = (value) => {
+  return /\d/.test(value);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -80,7 +80,12 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
 const wordsToCharList = (arr) => {
-  // Solution code here...
+  let myArr = arr.match(/\b[A-Z][a-z]*\b/g);
+  if(myArr) {
+    return myArr;
+  } else {
+    return [];
+  }
 };
 
 
