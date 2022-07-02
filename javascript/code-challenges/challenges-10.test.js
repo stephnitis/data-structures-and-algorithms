@@ -8,7 +8,7 @@ Write a function named returnTen, takes in a string and uses split and splice to
 ------------------------------------------------------------------------------------------------ */
 
 function returnTen(str){
-  let strArr =str.split('');
+  let strArr = str.split('');
   return strArr.splice(strArr.length - 10, 10);
 }
 
@@ -27,7 +27,15 @@ For example:
 return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
-  // Solution code here...
+  let max = 0;
+  matrix.forEach(subArr => {
+    subArr.forEach(num => {
+      if (num > max) {
+        max = num;
+      }
+    });
+  });
+  return max;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -45,19 +53,14 @@ For example:
 return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
-  // Solution code here...
-  let totalSum = 0;
-
-  matrix.forEach(nestedArr => { //slower loop
-    nestedArr.forEach(number => { //faster loop
-      totalSum += number;
+  let total = 0;
+  matrix.forEach(subArr => {
+    subArr.forEach(num => {
+      total += num;
     });
   });
-
-  return totalSum;
+  return total;
 };
-
-// return matrix.flat().reduce((preValue, current) => preVal + current, 0));
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -83,17 +86,16 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
-//   let hourlyTotals = [];
-//   for(let i = 0; i < stores[0].length; i++)
-//     let hourlySum = 0;
-//     for(let j = 0; j < stores.length; j++){
-//       hourlySum += stores[j][i];
-//     }
-//   return hourlyTotals.push(hourlySum);
-// };
-
-// return hourlyTotals;
+  let hourlyTotal=[];
+  for(let i=0; i<stores[0].length; i++) {
+    let hourlySum = 0;
+    for(let j=0; j< stores.length; j++) {
+      hourlySum += stores[j][i];
+    }
+    hourlyTotal.push(hourlySum);
+  }
+  return hourlyTotal;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -106,7 +108,12 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  return hours.map((hour, idx) => {
+    return {
+      sales: data[idx] + ' cookies',
+      time: hour,
+    };
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -131,21 +138,9 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
   return arr[2].items[1].quantity;
 };
 
-let treats = 0;
-
-// arr.forEach(object => {
-//   let listArr = obj.items;
-//   listArr.forEach(item => {
-//     if(item.name === 'Treats'){
-//       treats = item.quantity;
-//     }
-//   })
-// })
-// return treats;
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
