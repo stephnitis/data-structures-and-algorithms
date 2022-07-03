@@ -103,8 +103,8 @@ let starWarsData = [{
 let biggerThanLuke = (arr) => {
   let foundFirst = false;
   return arr.reduce((list, character) => {
-    if(parseInt(character.mass) > parseInt(arr[0].mass)) {
-      if(foundFirst) {
+    if (parseInt(character.mass) > parseInt(arr[0].mass)) {
+      if (foundFirst) {
         return `${list} - ${character.name}`;
       }
       foundFirst = true;
@@ -130,7 +130,7 @@ This data could be sorted by name or price.
 
 const sortBy = (property, arr) => {
   return arr.sort((objA, objB) => {
-    if(isNaN(objA[property])) {
+    if (isNaN(objA[property])) {
       return objA[property].localeCompare(objB[property]);
     } else {
       return parseFloat(objA[property]) - parseFloat(objB[property]);
@@ -151,7 +151,7 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-  // Solution code here...
+  return /https:\/\//.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -174,7 +174,30 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+  let helpCheck = (set) => {
+    return set.every(cell => cell !== '' && cell === set[0])
+      ? true
+      : false;
+  };
+
+  if (helpCheck(board[0])) return true;
+
+  if (helpCheck(board[1])) return true;
+
+  if (helpCheck(board[2])) return true;
+
+  if (helpCheck([board[0][0], board[1][0], board[2][0]])) return true;
+
+  if (helpCheck([board[0][1], board[1][1], board[2][1]])) return true;
+
+  if (helpCheck([board[0][2], board[1][2], board[2][2]])) return true;
+
+  if (helpCheck([board[0][0], board[1][1], board[2][2]])) return true;
+
+  if (helpCheck([board[0][2], board[1][1], board[2][0]])) return true;
+
+  return false;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
