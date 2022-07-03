@@ -7,7 +7,15 @@ Write a function named longestString that takes in an array of strings and retur
 ------------------------------------------------------------------------------------------------ */
 
 const longestString = (arr) => {
-// Solution code here...
+  let longStrIdx = -1;
+  let longStrLength = 0;
+  arr.forEach((word, idx) => {
+    if(word.length > longStrLength) {
+      longStrLength = word.length;
+      longStrIdx = idx;
+    }
+  });
+  return longStrIdx;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -19,7 +27,9 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 ------------------------------------------------------------------------------------------------ */
 
 const firstLetters = (arr) => {
-  // Solution code here...
+  return arr.map(str => {
+    return str.charAt(/[A-Za-z]/);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
