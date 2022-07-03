@@ -11,8 +11,9 @@ Write a function named screenForNames that takes in an array of strings and uses
 ------------------------------------------------------------------------------------------------ */
 
 const screenForNames = (arr) => {
-  // Solution code here...
-}
+  let regex = /^(Mr|Mrs|Ms|Dr). {1}\w+/;
+  return arr.filter(str => regex.test(str));
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -100,7 +101,17 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  let foundFirst = false;
+  return arr.reduce((list, character) => {
+    if(parseInt(character.mass) > parseInt(arr[0].mass)) {
+      if(foundFirst) {
+        return `${list} - ${character.name}`;
+      }
+      foundFirst = true;
+      return character.name;
+    }
+    return list;
+  }, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -118,7 +129,13 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  return arr.sort((objA, objB) => {
+    if(isNaN(objA[property])) {
+      return objA[property].localeCompare(objB[property]);
+    } else {
+      return parseFloat(objA[property]) - parseFloat(objB[property]);
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
