@@ -34,6 +34,45 @@ class LinkedList {
     }
   }
 
+  insert(value){
+    let node = new Node(value);
+    node.next = this.head;
+    this.head = node;
+  }
+
+  includes(value){
+    let result = false;
+
+    let current = this.head;
+
+    while(current){
+      if(current.value === value) result = true;
+      current = current.next;
+    }
+
+    return result;
+  }
+
+  toString(){
+    let string = '';
+    let current = this.head;
+    while(current){
+      string = string + `{ ${current.value} } ->`;
+      current = current.next;
+    }
+    string = string + 'NULL';
+    return string;
+  }
+
+  // append(value){
+  //   let node = new Node(value);
+  //   let current = this.head;
+  //   while(current){
+  //     if(current.next === null)
+
+  //   }
+  // }
+
 }
 
 let list = new LinkedList();
@@ -42,7 +81,8 @@ console.log(list);
 list.add('a');
 list.add('b');
 list.add('c');
-let string = JSON.stringify(list);
-console.log(string);
+list.insert(1);
+console.log('include result', list.includes(3));
+console.log('append the end', list.append(7));
 
 module.exports = LinkedList;
