@@ -123,34 +123,28 @@ class LinkedList {
 }
 
 class DoublyLinkedList {
-  constructor(value) {
-    this.head = {
-      value: value,
-      next: null,
-      previous: null
-    };
-    this.length = 1;
-    this.tail = this.head;
+
+  constructor(){
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
   }
 
-
-  append(value) {
+  addToDoubly(value){
+    this.length++;
     let newNode = new Node(value);
 
-    this.tail.next = newNode;
-    newNode.previous = this.tail;
-    this.tail = newNode;
-    return;
+    if (this.tail) {
+      this.tail.next = newNode;
+      newNode.previous = this.tail;
+      this.tail = newNode;
+      return newNode;
+    }
+
+    this.head = this.tail = newNode;
+    return newNode;
   }
 
-  prepend(value) {
-    let newNode = new Node(value);
-
-    newNode.next = this.head;
-    this.head.previous = newNode;
-    this.head = newNode;
-    return;
-  }
 }
 
 let list = new LinkedList();
@@ -165,8 +159,8 @@ list.insertBefore('c', 'A');
 console.log(list.toString());
 console.log('include result', list.includes(3));
 
-// doubleList.prepend('x');
-console.log(doubleList.append('y'));
-console.log(doubleList.prepend('x'));
+console.log(' -- Doubly List Below -- ');
+
+console.log(doubleList.addToDoubly(5));
 
 module.exports = LinkedList;
