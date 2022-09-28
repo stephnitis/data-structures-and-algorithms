@@ -64,6 +64,52 @@ class LinkedList {
     return string;
   }
 
+  insertBefore(value, newValue){
+    if(!this.head){
+      throw new Error('List is Empty');
+    }
+
+    if (this.head.value === value){
+      this.insert(newValue);
+      return;
+    }
+
+    let current = this.head;
+
+    while(current){
+      if (current.next.value === value){
+        let newNode = new Node(newValue);
+        newNode.next = current.next;
+        current.next = newNode;
+        return;
+      }
+      current = current.next;
+    }
+  }
+
+  insertAfter(value, newValue){
+    if(!this.head){
+      throw new Error('List is Empty');
+    }
+
+    if (this.head.value === value){
+      this.insert(newValue);
+      return;
+    }
+
+    let current = this.head;
+
+    while(current){
+      if (current.value === value){
+        let newNode = new Node(newValue);
+        newNode.next = current.next;
+        current.next = newNode;
+        return;
+      }
+      current = current.next;
+    }
+  }
+
   // append(value){
   //   let node = new Node(value);
   //   let current = this.head;
@@ -82,7 +128,8 @@ list.add('a');
 list.add('b');
 list.add('c');
 list.insert(1);
+list.insertBefore('c', 'A');
+console.log(list.toString());
 console.log('include result', list.includes(3));
-console.log('append the end', list.append(7));
 
 module.exports = LinkedList;
