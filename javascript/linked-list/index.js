@@ -162,5 +162,6 @@ console.log('include result', list.includes(3));
 console.log(' -- Doubly List Below -- ');
 
 console.log(doubleList.addToDoubly(5));
+console.log(doubleList.addToDoubly(7));
 
 module.exports = LinkedList;
