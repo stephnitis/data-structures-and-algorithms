@@ -142,7 +142,7 @@ class LinkedList {
       if (currentTwo.value && ableToZipTwo) {
         zippedList.append(currentTwo.value);
       }
-
+      console.log('Zipped List:'JSON.stringify(zippedList));
       if (currentOne.next) {
         currentOne = currentOne.next;
       } else {
