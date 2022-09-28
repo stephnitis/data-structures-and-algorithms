@@ -27,6 +27,15 @@ class LinkedList {
     current.next = node;
   }
 
+  append(newValue) {
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    let node = new Node(newValue);
+    current.next = node;
+  }
+
   traverse() {
     let current = this.head;
     while (current) {
@@ -111,26 +120,54 @@ class LinkedList {
     }
   }
 
-  // append(value){
-  //   let node = new Node(value);
-  //   let current = this.head;
-  //   while(current){
-  //     if(current.next === null)
 
-  //   }
-  // }
+  zipLists(listOne, listTwo) {
+    let zippedList = new LinkedList;
+
+    let currentOne = listOne.head;
+    let currentTwo = listTwo.head;
+
+    let ableToZipOne = true;
+    let ableToZipTwo = true;
+
+    while (ableToZipOne || ableToZipTwo) {
+      if(!zippedList.head){
+        zippedList.insert(currentOne.value);
+      }
+
+      if (currentOne.value && ableToZipOne) {
+        zippedList.append(currentOne.value);
+      }
+
+      if (currentTwo.value && ableToZipTwo) {
+        zippedList.append(currentTwo.value);
+      }
+
+      if (currentOne.next) {
+        currentOne = currentOne.next;
+      } else {
+        ableToZipOne = false;
+      }
+      if (currentTwo.next) {
+        currentTwo = currentTwo.next;
+      } else {
+        ableToZipTwo = false;
+      }
+    }
+    return zippedList;
+  }
 
 }
 
 class DoublyLinkedList {
 
-  constructor(){
+  constructor() {
     this.head = null;
     this.tail = null;
     this.length = 0;
   }
 
-  addToDoubly(value){
+  addToDoubly(value) {
     this.length++;
     let newNode = new Node(value);
 
@@ -158,6 +195,21 @@ list.insert(1);
 list.insertBefore('c', 'A');
 console.log(list.toString());
 console.log('include result', list.includes(3));
+
+//define lists as instances of class
+let listOne = new LinkedList();
+let listTwo = new LinkedList();
+let zippedList = new LinkedList();
+//insert to lists
+listOne.insert(3);
+listOne.insert(2);
+listOne.insert(1);
+listTwo.insert(10);
+listTwo.insert(9);
+listTwo.insert(8);
+//call ziplists function with declared variables of instances
+zippedList.zipLists(listOne, listTwo);
+console.log(zippedList.toString());
 
 console.log(' -- Doubly List Below -- ');
 
