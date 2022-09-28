@@ -1,62 +1,63 @@
 'use strict';
 
 class Node {
-  constructor(value){
+  constructor(value) {
     this.value = value;
     this.next = null;
+    this.previous = null;
   }
 }
 
 class LinkedList {
-  constructor(){
+  constructor() {
     this.head = null;
   }
 
-  add(value){
+  add(value) {
     const node = new Node(value);
 
-    if(!this.head){
+    if (!this.head) {
       this.head = node;
       return;
     }
     let current = this.head;
-    while(current.next){
+    while (current.next) {
       current = current.next;
     }
     current.next = node;
   }
 
-  traverse(){
+  traverse() {
     let current = this.head;
-    while(current){
+    while (current) {
       console.log(current.value);
       current = current.next;
     }
   }
 
-  insert(value){
+  insert(value) {
     let node = new Node(value);
     node.next = this.head;
     this.head = node;
   }
 
-  includes(value){
+  includes(value) {
     let result = false;
 
     let current = this.head;
 
-    while(current){
-      if(current.value === value) result = true;
+    while (current) {
+      if (current.value === value) result = true;
       current = current.next;
     }
 
     return result;
   }
 
-  toString(){
+  toString() {
     let string = '';
     let current = this.head;
-    while(current){
+    while (current) {
       string = string + `{ ${current.value} } ->`;
       current = current.next;
     }
@@ -64,20 +65,20 @@ class LinkedList {
     return string;
   }
 
-  insertBefore(value, newValue){
-    if(!this.head){
+  insertBefore(value, newValue) {
+    if (!this.head) {
       throw new Error('List is Empty');
     }
 
-    if (this.head.value === value){
+    if (this.head.value === value) {
       this.insert(newValue);
       return;
     }
 
     let current = this.head;
 
-    while(current){
-      if (current.next.value === value){
+    while (current) {
+      if (current.next.value === value) {
         let newNode = new Node(newValue);
         newNode.next = current.next;
         current.next = newNode;
@@ -87,20 +88,20 @@ class LinkedList {
     }
   }
 
-  insertAfter(value, newValue){
-    if(!this.head){
+  insertAfter(value, newValue) {
+    if (!this.head) {
       throw new Error('List is Empty');
     }
 
-    if (this.head.value === value){
+    if (this.head.value === value) {
       this.insert(newValue);
       return;
     }
 
     let current = this.head;
 
-    while(current){
-      if (current.value === value){
+    while (current) {
+      if (current.value === value) {
         let newNode = new Node(newValue);
         newNode.next = current.next;
         current.next = newNode;
@@ -121,7 +122,39 @@ class LinkedList {
 
 }
 
+class DoublyLinkedList {
+  constructor(value) {
+    this.head = {
+      value: value,
+      next: null,
+      previous: null
+    };
+    this.length = 1;
+    this.tail = this.head;
+  }
+
+
+  append(value) {
+    let newNode = new Node(value);
+
+    this.tail.next = newNode;
+    newNode.previous = this.tail;
+    this.tail = newNode;
+    return;
+  }
+
+  prepend(value) {
+    let newNode = new Node(value);
+
+    newNode.next = this.head;
+    this.head.previous = newNode;
+    this.head = newNode;
+    return;
+  }
+}
+
 let list = new LinkedList();
+let doubleList = new DoublyLinkedList();
 console.log(list);
 
 list.add('a');
@@ -131,5 +164,9 @@ list.insert(1);
 list.insertBefore('c', 'A');
 console.log(list.toString());
 console.log('include result', list.includes(3));
+
+// doubleList.prepend('x');
+console.log(doubleList.append('y'));
+console.log(doubleList.prepend('x'));
 
 module.exports = LinkedList;
