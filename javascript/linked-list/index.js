@@ -120,6 +120,22 @@ class LinkedList {
     }
   }
 
+  kthFromEnd(k){
+    let offset = this.head;
+    let nBehind = this.head;
+
+    for (let i = 0; i < k; i++){
+      offset = offset.next;
+    }
+
+    while(offset.next){
+      offset = offset.next;
+      nBehind = nBehind.next;
+    }
+
+    return nBehind.value;
+  }
+
 
   zipLists(listOne, listTwo) {
     let zippedList = new LinkedList;
@@ -142,7 +158,7 @@ class LinkedList {
       if (currentTwo.value && ableToZipTwo) {
         zippedList.append(currentTwo.value);
       }
-      console.log('Zipped List:'JSON.stringify(zippedList));
+      console.log('Zipped List:', JSON.stringify(zippedList));
       if (currentOne.next) {
         currentOne = currentOne.next;
       } else {
@@ -187,6 +203,14 @@ class DoublyLinkedList {
 let list = new LinkedList();
 let doubleList = new DoublyLinkedList();
 console.log(list);
+
+list.add(5);
+list.add(1);
+list.add(4);
+list.add(3);
+list.add(6);
+list.add(7);
+console.log('kth from end is', list.kthFromEnd(2));
 
 list.add('a');
 list.add('b');
