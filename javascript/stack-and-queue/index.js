@@ -20,25 +20,20 @@ class Stack {
   }
 
   pop() {
-    // remove the node
-    // what does this return and what happens to top? reassigned? What about if stack is empty
 
-    // INPUT <-- No input
-    // OUTPUT <-- value of top Node in stack
-    // EXCEPTION if stack is empty
+    let temp = this.top;
 
-    //   Node temp <-- top
-    //  top <-- top.next
-    //  temp.next <-- null
-    //  return temp.value
+    if (this.top) {
+      this.next = this.top;
+      temp.next = null;
+    }
+    return temp.value;
   }
 
   peek() {
-    // INPUT <-- none
-    // OUTPUT <-- value of top Node in stack
-    // EXCEPTION if stack is empty
-
-    // return top.value
+    if(this.top){
+      return this.top.value;
+    }
   }
 
   isEmpty() {
@@ -100,6 +95,11 @@ class Queue {
 let stack = new Stack();
 
 stack.push(1);
+stack.push(2);
+stack.push(3);
+stack.push(4);
+console.log(stack.peek());
+console.log(stack.pop());
 
 let queue = new Queue();
 
