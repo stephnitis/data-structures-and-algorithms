@@ -59,35 +59,23 @@ class Queue {
   }
 
   dequeue() {
-    // if front maybe use a temp variable
-    // mindful of the new front and the back
-    // if queue is left empty, is back null?
 
-    // INPUT <-- none
-    // OUTPUT <-- value of the removed Node
-    // EXCEPTION if queue is empty
-
-    //  Node temp <-- front
-    //  front <-- front.next
-    //  temp.next <-- null
-
-    //  return temp.value
+    let temp = this.front;
+    if (this.front){
+      this.next = this.front;
+      temp.next = null;
+    }
+    return temp.value;
   }
 
   peek() {
-    // INPUT <-- none
-    // OUTPUT <-- value of the front Node in Queue
-    // EXCEPTION if Queue is empty
-
-    // return front.value
+    if(this.front){
+      return this.front.value;
+    }
   }
 
   isEmpty() {
-    //return Boolean
-    // INPUT <-- none
-    // OUTPUT <-- boolean
-
-    // return front = NULL
+    return this.front === null;
   }
 
 }
@@ -103,4 +91,11 @@ console.log(stack.pop());
 
 let queue = new Queue();
 
+queue.enqueue(8);
 queue.enqueue(5);
+queue.enqueue(6);
+queue.enqueue(7);
+
+console.log(queue.peek());
+console.log(queue.dequeue());
+console.log(queue.isEmpty());
