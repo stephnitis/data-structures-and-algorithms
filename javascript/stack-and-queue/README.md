@@ -65,3 +65,7 @@ is empty
 - is empty
 - Arguments: none
 - Returns: Boolean indicating whether or not the queue is empty
+
+## Code Challenge 11: Pseudoqueue
+
+![whiteboard for pseudoqueue](./pseudoqueue-whiteboard.png)
