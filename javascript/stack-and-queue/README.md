@@ -69,3 +69,8 @@ is empty
 ## Code Challenge 11: Pseudoqueue
 
 ![whiteboard for pseudoqueue](./pseudoqueue-whiteboard.png)
+
+## Code Challenge 12: Animal Shelter
+
+![Whiteboard for animal shelter](./Code%20Challenge%2012.png)
+
