@@ -74,3 +74,7 @@ is empty
 
 ![Whiteboard for animal shelter](./Code%20Challenge%2012.png)
 
+## Code Challenge 13: Stack Queue Brackets
+
+![Whiteboard for finding brackets](./Code%20Challenge%2013.png)
+
