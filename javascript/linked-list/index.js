@@ -121,42 +121,6 @@ class LinkedList {
   }
 }
 
-// post function call: lists individually are reversed, not zipped
-function zipLists(listOne, listTwo) {
-  let zippedList = new LinkedList;
-
-  let currentOne = listOne.head;
-  let currentTwo = listTwo.head;
-
-  let ableToZipOne = true;
-  let ableToZipTwo = true;
-
-  while (ableToZipOne || ableToZipTwo) {
-    if(!zippedList.head){
-      zippedList.insert(currentOne.value);
-    }
-
-    else if (currentOne.value && ableToZipOne) {
-      zippedList.append(currentOne.value);
-    }
-
-    if (currentTwo.value && ableToZipTwo) {
-      zippedList.append(currentTwo.value);
-    }
-    // console.log('Zipped List:', JSON.stringify(zippedList));
-    if (currentOne.next) {
-      currentOne = currentOne.next;
-    } else {
-      ableToZipOne = false;
-    }
-    if (currentTwo.next) {
-      currentTwo = currentTwo.next;
-    } else {
-      ableToZipTwo = false;
-    }
-  }
-  return zippedList;
-}
 
 class DoublyLinkedList {
 
@@ -195,24 +159,6 @@ class DoublyLinkedList {
 // console.log(list.toString());
 // console.log('include result', list.includes(3));
 
-console.log('---- zip lists below ----');
-
-//define lists as instances of class
-let listOne = new LinkedList();
-let listTwo = new LinkedList();
-// let combined = new LinkedList();
-//insert to lists
-listOne.insert(3);
-listOne.insert(2);
-listOne.insert(1);
-listTwo.insert(10);
-listTwo.insert(9);
-listTwo.insert(8);
-//call ziplists function with declared variables of instances
-
-console.log(zipLists(listOne, listTwo).toString());
-console.log(listOne.toString());
-console.log(listTwo.toString());
 
 // console.log(' -- Doubly List Below -- ');
 
