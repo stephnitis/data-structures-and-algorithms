@@ -131,6 +131,7 @@ class LinkedList {
     while (offset.next) {
       offset = offset.next;
       nBehind = nBehind.next;
+      console.log(offset, nBehind);
     }
 
     return nBehind.value;
@@ -167,12 +168,12 @@ let list = new LinkedList();
 // let doubleList = new DoublyLinkedList();
 console.log(list);
 
-list.add('a');
-list.add('b');
-list.add('c');
-list.insert(1);
-list.insertBefore('c', 'A');
-console.log(list.toString());
+// list.add('a');
+// list.add('b');
+// list.add('c');
+// list.insert(1);
+// list.insertBefore('c', 'A');
+// console.log(list.toString());
 // console.log('include result', list.includes(3));
 
 
@@ -182,7 +183,7 @@ console.log(list.toString());
 // console.log(doubleList.addToDoubly(7));
 // console.log(list);
 
-// console.log ('---kth from end---');
+console.log ('---kth from end---');
 
 list.add(5);
 list.add(1);
@@ -190,6 +191,6 @@ list.add(4);
 list.add(3);
 list.add(6);
 list.add(7);
-// console.log('kth from end is', list.kthFromEnd(2));
+console.log('kth from end is', list.kthFromEnd(3));
 
 module.exports = LinkedList;
