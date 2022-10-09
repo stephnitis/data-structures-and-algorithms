@@ -120,7 +120,6 @@ class LinkedList {
     }
   }
 
-
   kthFromEnd(k){
     let offset = this.head;
     let nBehind = this.head;
@@ -138,7 +137,6 @@ class LinkedList {
   }
 
 }
-
 
 class DoublyLinkedList {
 
@@ -165,35 +163,9 @@ class DoublyLinkedList {
 
 }
 
-// let list = new LinkedList();
-// let doubleList = new DoublyLinkedList();
-// console.log(list);
-
-// list.add('a');
-// list.add('b');
-// list.add('c');
-// list.insert(1);
-// list.insertBefore('c', 'A');
-// console.log(list.toString());
-// console.log('include result', list.includes(3));
-
-
-// console.log(' -- Doubly List Below -- ');
-
-// console.log(doubleList.addToDoubly(5));
-// console.log(doubleList.addToDoubly(7));
-
 let list = new LinkedList();
 let doubleList = new DoublyLinkedList();
 console.log(list);
-
-list.add(5);
-list.add(1);
-list.add(4);
-list.add(3);
-list.add(6);
-list.add(7);
-console.log('kth from end is', list.kthFromEnd(2));
 
 list.add('a');
 list.add('b');
@@ -203,9 +175,21 @@ list.insertBefore('c', 'A');
 console.log(list.toString());
 console.log('include result', list.includes(3));
 
+
 console.log(' -- Doubly List Below -- ');
 
 console.log(doubleList.addToDoubly(5));
 console.log(doubleList.addToDoubly(7));
+console.log(list);
+
+console.log ('---kth from end---');
+
+list.add(5);
+list.add(1);
+list.add(4);
+list.add(3);
+list.add(6);
+list.add(7);
+console.log('kth from end is', list.kthFromEnd(2));
 
 module.exports = LinkedList;
