@@ -120,15 +120,15 @@ class LinkedList {
     }
   }
 
-  kthFromEnd(k){
+  kthFromEnd(k) {
     let offset = this.head;
     let nBehind = this.head;
 
-    for (let i = 0; i < k; i++){
+    for (let i = 0; i < k; i++) {
       offset = offset.next;
     }
 
-    while(offset.next){
+    while (offset.next) {
       offset = offset.next;
       nBehind = nBehind.next;
     }
@@ -138,33 +138,33 @@ class LinkedList {
 
 }
 
-class DoublyLinkedList {
+// class DoublyLinkedList {
 
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
-  }
+//   constructor() {
+//     this.head = null;
+//     this.tail = null;
+//     this.length = 0;
+//   }
 
-  addToDoubly(value) {
-    this.length++;
-    let newNode = new Node(value);
+//   addToDoubly(value) {
+//     this.length++;
+//     let newNode = new Node(value);
 
-    if (this.tail) {
-      this.tail.next = newNode;
-      newNode.previous = this.tail;
-      this.tail = newNode;
-      return newNode;
-    }
+//     if (this.tail) {
+//       this.tail.next = newNode;
+//       newNode.previous = this.tail;
+//       this.tail = newNode;
+//       return newNode;
+//     }
 
-    this.head = this.tail = newNode;
-    return newNode;
-  }
+//     this.head = this.tail = newNode;
+//     return newNode;
+//   }
 
-}
+// }
 
 let list = new LinkedList();
-let doubleList = new DoublyLinkedList();
+// let doubleList = new DoublyLinkedList();
 console.log(list);
 
 list.add('a');
@@ -173,16 +173,16 @@ list.add('c');
 list.insert(1);
 list.insertBefore('c', 'A');
 console.log(list.toString());
-console.log('include result', list.includes(3));
+// console.log('include result', list.includes(3));
 
 
-console.log(' -- Doubly List Below -- ');
+// console.log(' -- Doubly List Below -- ');
 
-console.log(doubleList.addToDoubly(5));
-console.log(doubleList.addToDoubly(7));
-console.log(list);
+// console.log(doubleList.addToDoubly(5));
+// console.log(doubleList.addToDoubly(7));
+// console.log(list);
 
-console.log ('---kth from end---');
+// console.log ('---kth from end---');
 
 list.add(5);
 list.add(1);
@@ -190,6 +190,6 @@ list.add(4);
 list.add(3);
 list.add(6);
 list.add(7);
-console.log('kth from end is', list.kthFromEnd(2));
+// console.log('kth from end is', list.kthFromEnd(2));
 
 module.exports = LinkedList;
