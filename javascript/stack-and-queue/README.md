@@ -68,13 +68,13 @@ is empty
 
 ## Code Challenge 11: Pseudoqueue
 
-![whiteboard for pseudoqueue](./pseudoqueue-whiteboard.png)
+![whiteboard for pseudoqueue](./assets/pseudoqueue-whiteboard.png)
 
 ## Code Challenge 12: Animal Shelter
 
-![Whiteboard for animal shelter](./Code%20Challenge%2012.png)
+![Whiteboard for animal shelter](./assets/Code%20Challenge%2012.png)
 
 ## Code Challenge 13: Stack Queue Brackets
 
-![Whiteboard for finding brackets](./Code%20Challenge%2013.png)
+![Whiteboard for finding brackets](./assets/Code%20Challenge%2013.png)
 
