@@ -119,6 +119,24 @@ class LinkedList {
       current = current.next;
     }
   }
+
+
+  kthFromEnd(k){
+    let offset = this.head;
+    let nBehind = this.head;
+
+    for (let i = 0; i < k; i++){
+      offset = offset.next;
+    }
+
+    while(offset.next){
+      offset = offset.next;
+      nBehind = nBehind.next;
+    }
+
+    return nBehind.value;
+  }
+
 }
 
 
@@ -164,5 +182,30 @@ class DoublyLinkedList {
 
 // console.log(doubleList.addToDoubly(5));
 // console.log(doubleList.addToDoubly(7));
+
+let list = new LinkedList();
+let doubleList = new DoublyLinkedList();
+console.log(list);
+
+list.add(5);
+list.add(1);
+list.add(4);
+list.add(3);
+list.add(6);
+list.add(7);
+console.log('kth from end is', list.kthFromEnd(2));
+
+list.add('a');
+list.add('b');
+list.add('c');
+list.insert(1);
+list.insertBefore('c', 'A');
+console.log(list.toString());
+console.log('include result', list.includes(3));
+
+console.log(' -- Doubly List Below -- ');
+
+console.log(doubleList.addToDoubly(5));
+console.log(doubleList.addToDoubly(7));
 
 module.exports = LinkedList;
