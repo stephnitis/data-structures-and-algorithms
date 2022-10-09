@@ -117,5 +117,57 @@ describe('Linked List', () => {
     expect(list.head.next.value).toEqual(3);
     expect(list.head.next.next.value).toEqual(2);
   });
-});
 
+  it('Where k is greater than the length of the linked list', () => {
+    let list = new LinkedList();
+    list.insert(2);
+    list.insert(3);
+    list.insert(4);
+    list.insert(5);
+    let testCase = list.kthFromEnd(6);
+    expect(testCase).toEqual('Exception');
+  });
+
+  it('Where k and the length of the list are the same', () => {
+    let list = new LinkedList();
+    list.insert(2);
+    list.insert(3);
+    list.insert(4);
+    list.insert(5);
+    let testCase = list.kthFromEnd(4);
+    expect(testCase).toEqual('Exception');
+  });
+
+  it('Where k is not a positive integer', () => {
+    let list = new LinkedList();
+    list.insert(2);
+    list.insert(3);
+    list.insert(4);
+    list.insert(5);
+    let testCase = list.kthFromEnd(-6);
+    expect(testCase).toEqual('Exception');
+  });
+
+  it('Where the linked list is of a size 1', () => {
+    let list = new LinkedList();
+    list.insert(1);
+    let testCase = list.kthFromEnd(1);
+    expect(testCase).toEqual('Exception');
+  });
+
+  it('Happy Path where k is not at the end, but somewhere in the middle of the linked list', () => {
+    let list = new LinkedList();
+    list.insert(2);
+    list.insert(3);
+    list.insert(4);
+    list.insert(5);
+    let testCase = list.kthFromEnd(2);
+    expect(testCase).toEqual(4);
+  });
+
+  // it('', () => {
+  //   let list = new LinkedList();
+  //   list.insert();
+  //   expect().toEqual();
+  // });
+});
