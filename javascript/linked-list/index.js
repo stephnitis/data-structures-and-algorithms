@@ -1,62 +1,72 @@
 'use strict';
 
 class Node {
-  constructor(value){
+  constructor(value) {
     this.value = value;
     this.next = null;
+    this.previous = null;
   }
 }
 
 class LinkedList {
-  constructor(){
+  constructor() {
     this.head = null;
   }
 
-  add(value){
+  add(value) {
     const node = new Node(value);
 
-    if(!this.head){
+    if (!this.head) {
       this.head = node;
       return;
     }
     let current = this.head;
-    while(current.next){
+    while (current.next) {
       current = current.next;
     }
     current.next = node;
   }
 
-  traverse(){
+  append(newValue) {
     let current = this.head;
-    while(current){
+    while (current.next) {
+      current = current.next;
+    }
+    let node = new Node(newValue);
+    current.next = node;
+  }
+
+  traverse() {
+    let current = this.head;
+    while (current) {
       console.log(current.value);
       current = current.next;
     }
   }
 
-  insert(value){
+  insert(value) {
     let node = new Node(value);
     node.next = this.head;
     this.head = node;
   }
 
-  includes(value){
+  includes(value) {
     let result = false;
 
     let current = this.head;
 
-    while(current){
-      if(current.value === value) result = true;
+    while (current) {
+      if (current.value === value) result = true;
       current = current.next;
     }
 
     return result;
   }
 
-  toString(){
+  toString() {
     let string = '';
     let current = this.head;
-    while(current){
+    while (current) {
       string = string + `{ ${current.value} } ->`;
       current = current.next;
     }
@@ -64,25 +74,122 @@ class LinkedList {
     return string;
   }
 
-  // append(value){
-  //   let node = new Node(value);
-  //   let current = this.head;
-  //   while(current){
-  //     if(current.next === null)
+  insertBefore(value, newValue) {
+    if (!this.head) {
+      throw new Error('List is Empty');
+    }
 
-  //   }
-  // }
+    if (this.head.value === value) {
+      this.insert(newValue);
+      return;
+    }
+
+    let current = this.head;
+
+    while (current) {
+      if (current.next.value === value) {
+        let newNode = new Node(newValue);
+        newNode.next = current.next;
+        current.next = newNode;
+        return;
+      }
+      current = current.next;
+    }
+  }
+
+  insertAfter(value, newValue) {
+    if (!this.head) {
+      throw new Error('List is Empty');
+    }
+
+    if (this.head.value === value) {
+      this.insert(newValue);
+      return;
+    }
+
+    let current = this.head;
+
+    while (current) {
+      if (current.value === value) {
+        let newNode = new Node(newValue);
+        newNode.next = current.next;
+        current.next = newNode;
+        return;
+      }
+      current = current.next;
+    }
+  }
+
+  kthFromEnd(k){
+    let offset = this.head;
+    let nBehind = this.head;
+
+    for (let i = 0; i < k; i++){
+      offset = offset.next;
+    }
+
+    while(offset.next){
+      offset = offset.next;
+      nBehind = nBehind.next;
+    }
+
+    return nBehind.value;
+  }
+
+}
+
+class DoublyLinkedList {
+
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  addToDoubly(value) {
+    this.length++;
+    let newNode = new Node(value);
+
+    if (this.tail) {
+      this.tail.next = newNode;
+      newNode.previous = this.tail;
+      this.tail = newNode;
+      return newNode;
+    }
+
+    this.head = this.tail = newNode;
+    return newNode;
+  }
 
 }
 
 let list = new LinkedList();
+let doubleList = new DoublyLinkedList();
 console.log(list);
 
 list.add('a');
 list.add('b');
 list.add('c');
 list.insert(1);
+list.insertBefore('c', 'A');
+console.log(list.toString());
 console.log('include result', list.includes(3));
-console.log('append the end', list.append(7));
+
+
+console.log(' -- Doubly List Below -- ');
+
+console.log(doubleList.addToDoubly(5));
+console.log(doubleList.addToDoubly(7));
+console.log(list);
+
+console.log ('---kth from end---');
+
+list.add(5);
+list.add(1);
+list.add(4);
+list.add(3);
+list.add(6);
+list.add(7);
+console.log('kth from end is', list.kthFromEnd(2));
 
 module.exports = LinkedList;
