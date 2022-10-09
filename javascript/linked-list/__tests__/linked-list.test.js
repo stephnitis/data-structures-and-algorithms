@@ -2,6 +2,7 @@
 
 // Require our linked list implementation
 const LinkedList = require('../index');
+const {zipLists} = require('../zip-lists');
 
 describe('Linked List', () => {
   it('works', () => {
@@ -52,9 +53,19 @@ describe('Linked List', () => {
     expect(list.includes(2)).toEqual(true);
   });
 
+});
 
-
-
+describe('Linked-List-Zip', () => {
+  let listOne = new LinkedList();
+  let listTwo = new LinkedList();
+  listOne.insert(3);
+  listOne.insert(2);
+  listOne.insert(1);
+  listTwo.insert(10);
+  listTwo.insert(9);
+  listTwo.insert(8);
+  zipLists(listOne, listTwo).toString();
+  expect().stringContaining('{ 1 } ->{ 8 } ->{ 2 } ->{ 9 } ->{ 3 } ->{ 10 } ->NULL');
 
 });
 
