@@ -91,6 +91,8 @@ pseudoQueue.enqueue(7);
 pseudoQueue.enqueue(6);
 pseudoQueue.enqueue(5);
 
+pseudoQueue.dequeue();
+pseudoQueue.dequeue();
 
 console.log(pseudoQueue);
 
