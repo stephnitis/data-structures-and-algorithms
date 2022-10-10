@@ -82,41 +82,37 @@ class Queue {
 
 class PseudoQueue {
   constructor() {
-    this.top = null;
-  }
-
-  push(value) {
-    let newNode = new Node(value);
-    newNode.next = this.top;
-    this.top = newNode;
-  }
-
-  pop() {
-
-    let temp = this.top;
-
-    if (this.top) {
-      this.next = this.top;
-      temp.next = null;
-    }
-    return temp.value;
+    this.front = null;
+    this.back = null;
   }
 
   enqueue(value) {
-    while (!this.unloadStack.isEmpty()) {
-      this.loadStack.push(this.unloadStack.pop());
+    const stack = new Stack();
+    if (this.back) {
+      stack.top = this.back;
+      stack.push(value);
+      this.back = stack.top;
+    } else {
+      this.back = new Node(value);
+      this.front = this.back;
     }
-    this.loadStack.push(value);
-    this.back = this.loadStack.top;
   }
 
   dequeue() {
-    while (!this.loadStack.isEmpty()) {
-      this.unloadStack.push(this.loadStack.pop());
+    if (!this.back) return;
+    const stack = new Stack();
+    const tempStack = new Stack();
+    stack.top = this.back;
+    while(stack.top) {
+      tempStack.push(stack.pop());
     }
-    let result = this.unloadStack.pop();
-    this.front = this.unloadStack.top;
-    return result;
+    const popped = tempStack.pop();
+    this.front = tempStack.top;
+    while (tempStack.top) {
+      stack.push(tempStack.pop());
+    }
+    this.back = stack.top;
+    return popped;
   }
 }
 
@@ -142,6 +138,12 @@ console.log(queue.isEmpty());
 
 let pseudoQueue = new PseudoQueue();
 
-pseudoQueue.push(10);
+pseudoQueue.enqueue(10);
+pseudoQueue.enqueue(9);
+pseudoQueue.enqueue(8);
+pseudoQueue.enqueue(7);
+pseudoQueue.enqueue(6);
+pseudoQueue.enqueue(5);
+
 
 console.log(pseudoQueue.toString());
