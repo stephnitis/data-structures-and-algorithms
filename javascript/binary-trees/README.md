@@ -44,6 +44,8 @@ Contains:
 
 ## Code Challenge 16
 
+## branch: tree-max
+
 ### Method for the Binary Tree class
 
 - find maximum value
