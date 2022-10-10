@@ -41,3 +41,25 @@ Contains:
 7. Returns true	(false for the `contains` method, given an existing or non-existing node value)
 
 ![tree traversals diagram](./assets/Tree%20Traversals.png)
+
+## Code Challenge 16
+
+### Method for the Binary Tree class
+
+- find maximum value
+- Arguments: none
+- Returns: number
+
+### Approach
+
+We must visit every node to figure out maximum. So the idea is to traverse the given tree and for every node return maximum of 3 values.
+
+1. Node’s data.
+2. Maximum in node’s left subtree.
+3. Maximum in node’s right subtree.
+
+**Time Complexity: O(N).**
+In the recursive function calls, every node of the tree is processed once and hence the complexity due to the function is O(N) if there are total N nodes in the tree. Therefore, the time complexity is O(N).
+
+**Space Complexity: O(N).**
+Recursive call is happening. The every node is processed once and considering the stack space, the space complexity will be O(N).
