@@ -65,3 +65,5 @@ In the recursive function calls, every node of the tree is processed once and he
 
 **Space Complexity: O(N).**
 Recursive call is happening. The every node is processed once and considering the stack space, the space complexity will be O(N).
+
+![find max whiteboard](./assets/Binary%20Tree_%20Find%20Max.png)
