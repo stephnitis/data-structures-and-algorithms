@@ -100,4 +100,5 @@ queue.enqueue(7);
 // console.log(queue.dequeue());
 // console.log(queue.isEmpty());
 
-module.exports = Stack; Queue;
+module.exports = {Stack, Queue};
+
