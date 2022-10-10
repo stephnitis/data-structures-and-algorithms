@@ -1,6 +1,6 @@
 # stacks and queues
 
-![notes and diagram](./stacksnqueues.png);
+![notes and diagram](./assets/stacksnqueues.png);
 
 ## Code Challenge 10
 
