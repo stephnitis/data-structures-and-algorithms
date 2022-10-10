@@ -89,9 +89,37 @@ is empty
 
 ## Code Challenge 12: Animal Shelter
 
+### branch: stack-queue-animal-shelter
+
+- Create a class called AnimalShelter which holds only dogs and cats.
+- The shelter operates using a first-in, first-out approach.
+- Implement the following methods:
+  - enqueue
+    - Arguments: animal
+    - animal can be either a dog or a cat object.
+  - dequeue
+    - Arguments: pref
+    - pref can be either "dog" or "cat"
+  - Return: either a dog or a cat, based on preference.
+    - If pref is not "dog" or "cat" then return null.
+
 ![Whiteboard for animal shelter](./assets/Code%20Challenge%2012.png)
 
 ## Code Challenge 13: Stack Queue Brackets
 
-![Whiteboard for finding brackets](./assets/Code%20Challenge%2013.png)
+### branch: stack-queue-brackets
 
+- Write a function called validate brackets
+- Arguments: string
+- Return: boolean
+  - representing whether or not the brackets in the string are balanced
+
+- There are 3 types of brackets:
+
+  - Round Brackets : `()`
+  - Square Brackets : `[]`
+  - Curly Brackets : `{}`
+
+![brackets examples](./assets/bracketexample.png)
+
+![Whiteboard for finding brackets](./assets/Code%20Challenge%2013.png)
