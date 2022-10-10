@@ -1,6 +1,6 @@
 # stacks and queues
 
-![notes and diagram](./stacksnqueues.png);
+![notes and diagram](./assets/stacksnqueues.png);
 
 ## Code Challenge 10
 
@@ -68,9 +68,58 @@ is empty
 
 ## Code Challenge 11: Pseudoqueue
 
-![whiteboard for pseudoqueue](./pseudoqueue-whiteboard.png)
+### branch: stack-queue-pseudo
+
+#### Create a new class called pseudo queue
+
+- Do not use an existing Queue.
+- Instead, this PseudoQueue class will implement our standard queue interface (the two methods listed below),
+- Internally, utilize 2 Stack instances to create and manage the queue
+
+#### Methods:
+
+- enqueue:
+  - Arguments: value
+  - Inserts value into the PseudoQueue, using a first-in, first-out approach.
+- dequeue:
+  - Arguments: none
+  - Extracts a value from the PseudoQueue, using a first-in, first-out approach.
+
+![whiteboard for pseudoqueue](./assets/pseudoqueue-whiteboard.png)
 
 ## Code Challenge 12: Animal Shelter
 
-![Whiteboard for animal shelter](./Code%20Challenge%2012.png)
+### branch: stack-queue-animal-shelter
 
+- Create a class called AnimalShelter which holds only dogs and cats.
+- The shelter operates using a first-in, first-out approach.
+- Implement the following methods:
+  - enqueue
+    - Arguments: animal
+    - animal can be either a dog or a cat object.
+  - dequeue
+    - Arguments: pref
+    - pref can be either "dog" or "cat"
+  - Return: either a dog or a cat, based on preference.
+    - If pref is not "dog" or "cat" then return null.
+
+![Whiteboard for animal shelter](./assets/Code%20Challenge%2012.png)
+
+## Code Challenge 13: Stack Queue Brackets
+
+### branch: stack-queue-brackets
+
+- Write a function called validate brackets
+- Arguments: string
+- Return: boolean
+  - representing whether or not the brackets in the string are balanced
+
+- There are 3 types of brackets:
+
+  - Round Brackets : `()`
+  - Square Brackets : `[]`
+  - Curly Brackets : `{}`
+
+![brackets examples](./assets/bracketexample.png)
+
+![Whiteboard for finding brackets](./assets/Code%20Challenge%2013.png)
