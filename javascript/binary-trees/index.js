@@ -49,6 +49,27 @@ class BinaryTree {
 
     _traverse(this.root);
   }
+
+  findMax(){
+    if(!this.root){
+      return 'Empty';
+    }
+    let maxValue = new Node(this.root.value);
+
+    const traverse = (node) => {
+      if (node.value > maxValue.value){
+        maxValue.value = node.value;
+      }
+      if (node.left){
+        traverse(node.left);
+      }
+      if (node.right){
+        traverse(node.right);
+      }
+    };
+    traverse(this.root);
+    return maxValue;
+  }
 }
 
 class BinarySearchTree {
@@ -95,9 +116,10 @@ tree.postOrder();
 let searchTree = new BinarySearchTree();
 
 searchTree.insert(100);
-searchTree.insert(50);
 searchTree.insert(200);
 searchTree.insert(75);
+searchTree.insert(50);
 searchTree.insert(25);
 
 console.log(searchTree);
+console.log(tree.findMax());
