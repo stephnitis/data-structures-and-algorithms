@@ -61,43 +61,6 @@ function zipLists(list1, list2) {
   return zippedList;
 }
 
-// append(newValue) {
-//   let current = this.head;
-//   while (current.next) {
-//     current = current.next;
-//   }
-//   let node = new Node(newValue);
-//   current.next = node;
-// }
-
-// function zipLists(list1, list2) {
-//   if (!list1.head && !list2.head) {
-//     let zippedList = new LinkedList;
-//     return zippedList;
-//   } else if (list1.head && !list2.head) {
-//     return list1;
-//   } else if (!list1.head && list2.head) {
-//     return list2;
-//   }
-//   let zippedList = new LinkedList;
-//   let current1 = list1.head;
-//   let current2 = list2.head;
-
-//   while (current1 || current2) {
-//     if (current1) {
-//       zippedList.current(current1.value);
-//       current1 = current1.next;
-//     }
-//     if (current2) {
-//       zippedList.append(current2.value);
-//       current2 = current2.next;
-//     }
-
-//   }
-//   return zippedList.toString();
-// }
-
-
 console.log('---- zip lists below ----');
 
 //define lists as instances of class
