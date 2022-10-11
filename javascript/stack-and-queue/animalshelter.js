@@ -41,4 +41,13 @@ class AnimalShelter {
   }
 }
 
+let sparky = new Dog('Sparky', 'dalmation');
+let mittens = new Cat('Mittens', 'black');
+let shelter = new AnimalShelter();
+
+shelter.enqueue(sparky);
+shelter.enqueue(mittens);
+console.log(shelter);
+console.log(shelter.dequeue('dog'));
+
 module.exports = {AnimalShelter, Dog, Cat};
