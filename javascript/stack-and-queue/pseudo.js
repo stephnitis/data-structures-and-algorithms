@@ -1,6 +1,6 @@
 'use strict';
 
-const {Stack} = require('../stack-and-queue/index');
+const {Stack} = require('./index');
 
 class Node {
   constructor(value) {
@@ -44,42 +44,14 @@ class PseudoQueue {
   }
 
   dequeue() {
-    while (!this.loadStack.isEmpty()) {
-      this.unloadStack.push(this.loadStack.pop());
+    while (this.unloadStack.isEmpty()) {
+      let value = this.loadStack.pop();
+      this.unloadStack.push(value);
     }
-    let result = this.unloadStack.pop();
+    let result = this.unloadStack.peek();
     this.front = this.unloadStack.top;
     return result;
   }
-
-  // enqueue(value) {
-  //   const stack = new Stack();
-  //   if (this.back) {
-  //     stack.top = this.back;
-  //     stack.push(value);
-  //     this.back = stack.top;
-  //   } else {
-  //     this.back = new Node(value);
-  //     this.front = this.back;
-  //   }
-  // }
-
-  // dequeue() {
-  //   if (!this.back) return;
-  //   const stack = new Stack();
-  //   const tempStack = new Stack();
-  //   stack.top = this.back;
-  //   while(stack.top) {
-  //     tempStack.push(stack.pop());
-  //   }
-  //   const popped = tempStack.pop();
-  //   this.front = tempStack.top;
-  //   while (tempStack.top) {
-  //     stack.push(tempStack.pop());
-  //   }
-  //   this.back = stack.top;
-  //   return popped;
-  // }
 }
 
 let pseudoQueue = new PseudoQueue();
@@ -91,9 +63,11 @@ pseudoQueue.enqueue(7);
 pseudoQueue.enqueue(6);
 pseudoQueue.enqueue(5);
 
+console.log('load stack', pseudoQueue.loadStack);
+
 pseudoQueue.dequeue();
 pseudoQueue.dequeue();
 
-console.log(pseudoQueue);
+console.log('unload stack', pseudoQueue.unloadStack);
 
 module.exports = PseudoQueue;
