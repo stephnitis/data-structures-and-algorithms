@@ -71,3 +71,5 @@ Recursive call is happening. The every node is processed once and considering th
 ## Code Challenge 18
 
 ## branch: tree-fizz-buzz
+
+![tree fizz buzz whiteboard](./assets/Code%20Challenge%2018.png)
