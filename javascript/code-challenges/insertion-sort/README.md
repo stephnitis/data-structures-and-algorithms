@@ -1,6 +1,6 @@
 # insertion sort
 
-## Branch: Insertion Sort
+## Branch: insertion-sort
 
 ![insertion sort](./insertion-sort.png)
 
