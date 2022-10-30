@@ -29,3 +29,7 @@
 
 - Arguments: key
 - Returns: Index in the collection for that key
+
+Resources:
+
+- [educative.io](https://www.educative.io/blog/data-strucutres-hash-table-javascript)
