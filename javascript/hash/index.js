@@ -1,81 +1,95 @@
 'use strict';
 
-// const {LinkedList} = require ('../linked-list/index');
+const LinkedList = require('../linked-list/index');
 
 class Hash {
-  constructor(){
-    this.size = 0;
-    this.values = {};
-    this.length = 0;
+  constructor(size){
+    this.size = size;
+    this.buckets = new Array(size);
   }
 
-  hash(key) {
-    return key.toString().length % this.size;
+  hash(key){
+    let characters = key.split('');
+    let asciiSum = characters.reduce((sum, character) => {
+      return sum + character.charCodeAt(0);
+    }, 0);
+
+    let initialHash = asciiSum * 599;
+    return initialHash % this.size;
   }
 
-  // The hasOwnProperty() method returns a boolean indicating whether the object has the specified property as its own property (as opposed to inheriting it).
+  set(key, value){
+    let position = this.hash(key);
+    let data = {[key]: value};
 
-  set(key, value) {
-    const hash = this.hash(key);
-    if (!this.values.hasOwnProperty(hash)) {
-      this.values[hash] = {};
-    }
-    if(!this.values[hash].hasOwnProperty(key)){
-      this.length++;
-    }
-    this.values[hash][key] = value;
-  }
-
-  get(key) {
-    const hash = this.hash(key);
-    if(this.values.hasOwnProperty(hash) && this.values[hash].hasOwnProperty(key)) {
-      return this.values[hash][key];
+    if(this.buckets[position]){
+      let bucket = this.buckets[position];
+      bucket.add(data);
     } else {
-      return null;
+      let bucket = new LinkedList();
+      bucket.add(data);
+      this.buckets[position] = bucket;
     }
   }
 
-  // hash(key){
-  //   let characters = key.split('');
-  //   let asciiSum = characters.reduce((sum, character) => {
-  //     return sum + character.charCodeAt(0);
-  //   }, 0);
+  get(key){
+    let index = this.hash(key);
 
-  //   let initialHash = asciiSum * 599;
-  //   return initialHash % this.size;
-  // }
+    if(this.buckets[index]){
+      let bucket = this.buckets[index];
 
-  // set(key, value){
-  //   let position = this.hash(key);
-  //   let data = {[key]: value};
+      let value = bucket.head.value[key];
+      return value;
+    }
+  }
 
-  //   if(this.buckets[position]){
-  //     let bucket = this.buckdets[position];
-  //     bucket.add(data);
-  //   } else {
-  //     let bucket = new LinkedList();
-  //     bucket.add(data);
-  //     this.buckets[position] = bucket;
-  //   }
-  // }
+  has(key){
+    if(this.get(key)){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-  // get(key){
-  //   let position = this.hash(key);
-
-  //   if(this.buckets[position]){
-  //     let bucket = this.buckets[position];
-
-  //     let value = bucket.head.value[key];
-  //     return value;
-  //   }
-  // }
+  keys(){
+  //returns a collection (array) of unique hash keys.
+  //   this.buckets.forEach((values, index) => {
+  //     let chainedValues = values.map(
+  //       ([key, value]) => `[${key}: ${value}]`
+  //     );
+  //     console.log(`${index}: ${chainedValues}`);
+  //   });
+  }
 }
 
-let hashTable = new Hash();
+// map takes an array and function as argument
 
-hashTable.set('potato', 500);
-hashTable.set('banana', 200);
-hashTable.set('starch monster', 20);
+// function map(arr, mapFunc) {
+//   const mapArr = [];
+//   // empty array
+//   // loop though array
+//   for(let i=0;i<arr.length;i++) {
+//     const result = mapFunc(arr[i], i, arr);
+//     mapArr.push(result);
+//   }
+//   return mapArr;
+// }
 
+let hashTable = new Hash(1024);
+
+console.log(hashTable.hash('potato'));
+console.log(hashTable.hash('banana'));
+console.log(hashTable.hash('starch monster'));
+
+
+hashTable.set('potato', {style: 'french fried', rating: 10});
+hashTable.set('potato', {style: 'chipped', rating: 7});
+hashTable.set('starch monster', {name: 'Stephanie', hungry: true});
 console.log(hashTable);
-console.log(hashTable.get('potato'));
+console.log(JSON.stringify(hashTable.buckets[849]));
+console.log(JSON.stringify(hashTable.buckets[971]));
+
+console.log('does the table have potato ----->', hashTable.has('potato'));
+console.log('does the table have linguini ----->', hashTable.has('linguini'));
+
+console.log(hashTable.keys());
