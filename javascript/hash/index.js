@@ -52,14 +52,19 @@ class Hash {
   }
 
   keys(){
-  //returns a collection (array) of unique hash keys.
-  //   this.buckets.forEach((values, index) => {
-  //     let chainedValues = values.map(
-  //       ([key, value]) => `[${key}: ${value}]`
-  //     );
-  //     console.log(`${index}: ${chainedValues}`);
-  //   });
+    let keysArray = [];
+    for (let i = 0; i < this.buckets.length; i++){
+      if(this.buckets[i]){
+        for(let j= 0; j < this.buckets[i].length; j++){
+          if(!keysArray.includes(this.buckets[i][j][0])){
+            keysArray.push(this.buckets[i][j][0]);
+          }
+        }
+      }
+    }
+    return keysArray;
   }
+
 }
 
 // map takes an array and function as argument
