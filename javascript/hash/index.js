@@ -67,8 +67,10 @@ class Hash {
         let bucket = this.buckets[i];
         let current = bucket.head;
         while (current) {
-          console.log(Object.keys(current.value)[0]);
-          keysArray.push(Object.keys(current.value)[0]);
+          // console.log(Object.keys(current.value)[0]);
+          // keysArray.push(Object.keys(current.value)[0]);
+          console.log(current.value);
+          keysArray.push(current.value);
           current = current.next;
         }
       }
@@ -79,24 +81,41 @@ class Hash {
 }
 
 
-let hashTable = new Hash(1024);
+// let hashTable = new Hash(1024);
 
 // console.log(hashTable.hash('potato'));
 // console.log(hashTable.hash('banana'));
 // console.log(hashTable.hash('starch monster'));
 
-hashTable.set('potato', { style: 'french fried', rating: 10 });
-hashTable.set('potato', { style: 'chipped', rating: 7 });
-hashTable.set('starch monster', { name: 'Stephanie', hungry: true });
-hashTable.set('papaya', 'fruit');
-hashTable.set('Kali', 'pup');
+// hashTable.set('potato', { style: 'french fried', rating: 10 });
+// hashTable.set('potato', { style: 'chipped', rating: 7 });
+// hashTable.set('starch monster', { name: 'Stephanie', hungry: true });
+// hashTable.set('papaya', 'fruit');
+// hashTable.set('Kali', 'pup');
 // console.log(hashTable);
 // console.log(JSON.stringify(hashTable.buckets[849]));
 // console.log(JSON.stringify(hashTable.buckets[971]));
 
-hashTable.get('potato');
+// hashTable.get('potato');
 
 // console.log('does the table have potato ----->', hashTable.has('potato'));
 // console.log('does the table have linguini ----->', hashTable.has('linguini'));
 
-console.log(hashTable.keys());
+let hashOne = new Hash(1024);
+let hashTwo = new Hash(1024);
+
+hashOne.set('diligent', 'employed');
+hashOne.set('fond', 'enamored');
+hashOne.set('guide', 'usher');
+hashOne.set('outfit', 'garb');
+hashOne.set('wrath', 'anger');
+
+hashTwo.set('diligent', 'idle');
+hashTwo.set('fond', 'averse');
+hashTwo.set('guide', 'follow');
+hashTwo.set('flow', '	jam');
+hashTwo.set('wrath', 'delight');
+
+console.log(hashOne.keys());
+
+module.exports = Hash;
