@@ -6,7 +6,6 @@ class Node {
     this.value = value;
     this.left = null;
     this.right = null;
-
   }
 }
 
@@ -78,7 +77,7 @@ class BinarySearchTree {
   }
 
   insert(data) {
-    if(this.root ===null) {
+    if(this.root === null) {
       this.root = new Node(data);
     } else {
       const node = this.root;
@@ -96,7 +95,22 @@ class BinarySearchTree {
       return _searchTree(node);
     }
   }
+
+  binaryTraverse(current) {
+    const _traverse = (node) => {
+      if (node.value <= current.value) {
+        if (current.left) _traverse(current.left);
+        else current.left = node;
+      }
+      else if (node.value > current.value) {
+        if (current.right) _traverse(current.right);
+        else current.right = node;
+      }
+    };
+    _traverse(this.root);
+  }
 }
+
 
 let tree = new BinaryTree();
 

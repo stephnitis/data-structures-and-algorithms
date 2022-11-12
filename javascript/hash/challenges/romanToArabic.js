@@ -25,7 +25,6 @@ function romanToArabic(number) {
     while (number >= romanNumber[key]) {
       roman += key;
       number -= romanNumber[key];
-
     }
   }
   return roman;

@@ -201,7 +201,7 @@ console.log(list);
 // console.log(doubleList.addToDoubly(7));
 // console.log(list);
 
-console.log('---kth from end---');
+// console.log('---kth from end---');
 
 list.add(5);
 list.add(1);
@@ -209,6 +209,6 @@ list.add(4);
 list.add(3);
 list.add(6);
 list.add(7);
-console.log('kth from end is', list.kthFromEnd(3));
+// console.log('kth from end is', list.kthFromEnd(3));
 
 module.exports = LinkedList;
