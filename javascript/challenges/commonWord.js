@@ -5,6 +5,10 @@ const mostCommonWord = (paragraph, banned) => {
   let bannedWords = new Set();
   let mostCommon = '';
 
+  // The RegExp \W matches any character that is not a word character from the basic Latin alphabet. Equivalent to [^A-Za-z0-9_]. For example, /\W/ or /[^A-Za-z0-9_]/ matches "%" in "50%".
+
+  // the “+” operator in regex is used for identifying repeating characters
+
   let words = paragraph.split(/\W+/);
 
   for (let word of banned){
