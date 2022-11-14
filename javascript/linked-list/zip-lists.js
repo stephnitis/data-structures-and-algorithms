@@ -100,9 +100,11 @@ let list2 = new LinkedList();
 list1.insert(3);
 list1.insert(2);
 list1.insert(1);
-list2.insert(10);
+list1.insert(10);
+console.log('list1 ----->', list1.toString());
 list2.insert(9);
 list2.insert(8);
+console.log('list2 ----->', list2.toString());
 
 //call ziplists function with declared variables of instances
 
