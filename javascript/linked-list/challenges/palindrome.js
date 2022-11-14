@@ -9,6 +9,8 @@ const LinkedList = require('../index');
 // 3. Check if the first half and second half are identical
 // 4. Construct the original linked list by reversing the second half again and attaching it back to the first half
 
+//how do I account for the middle node?
+
 const stringToList = (string) => {
   let stringList = new LinkedList();
   for (let i = 0; i < string.length; i++ ){
