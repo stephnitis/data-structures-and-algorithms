@@ -235,10 +235,11 @@ class BinarySearchTree {
 function sumOfOdds(binarySearchTree) {
   let sum = 0;
   const _traverse = (node) => {
+    if (node.left) _traverse(node.left);
     if (node.value % 2 !== 0) {
       sum += node.value;
+      console.log(sum);
     }
-    if (node.left) _traverse(node.left);
     if (node.right) _traverse(node.right);
   };
   _traverse(binarySearchTree.root);
@@ -263,11 +264,13 @@ tree.postOrder();
 
 let searchTree = new BinarySearchTree();
 
-searchTree.insert(100);
-searchTree.insert(200);
-searchTree.insert(75);
-searchTree.insert(50);
-searchTree.insert(25);
+searchTree.insert(15);
+searchTree.insert(11);
+searchTree.insert(7);
+searchTree.insert(12);
+searchTree.insert(20);
+searchTree.insert(18);
+searchTree.insert(23);
 
 console.log('searchTree ---->', searchTree);
 // console.log(tree.findMax());
