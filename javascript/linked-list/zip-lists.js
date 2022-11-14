@@ -25,41 +25,68 @@ const LinkedList = require('./index');
 // }
 
 // post function call: lists individually are reversed, not zipped
-function zipLists(list1, list2) {
-  let zippedList = new LinkedList;
+// function zipLists(list1, list2) {
+//   let zippedList = new LinkedList;
 
-  let currentOne = list1.head;
-  let currentTwo = list2.head;
+//   let currentOne = list1.head;
+//   let currentTwo = list2.head;
 
-  let ableToZipOne = true;
-  let ableToZipTwo = true;
+//   let ableToZipOne = true;
+//   let ableToZipTwo = true;
 
-  while (ableToZipOne || ableToZipTwo) {
-    if(!zippedList.head){
-      zippedList.insert(currentOne.value);
-    }
+//   while (ableToZipOne || ableToZipTwo) {
+//     if(!zippedList.head){
+//       zippedList.insert(currentOne.value);
+//     }
 
-    else if (currentOne.value && ableToZipOne) {
-      zippedList.append(currentOne.value);
-    }
+//     else if (currentOne.value && ableToZipOne) {
+//       zippedList.append(currentOne.value);
+//     }
 
-    if (currentTwo.value && ableToZipTwo) {
-      zippedList.append(currentTwo.value);
-    }
-    // console.log('Zipped List:', JSON.stringify(zippedList));
-    if (currentOne.next) {
-      currentOne = currentOne.next;
+//     if (currentTwo.value && ableToZipTwo) {
+//       zippedList.append(currentTwo.value);
+//     }
+//     // console.log('Zipped List:', JSON.stringify(zippedList));
+//     if (currentOne.next) {
+//       currentOne = currentOne.next;
+//     } else {
+//       ableToZipOne = false;
+//     }
+//     if (currentTwo.next) {
+//       currentTwo = currentTwo.next;
+//     } else {
+//       ableToZipTwo = false;
+//     }
+//   }
+//   return zippedList;
+// }
+
+const zipLists = (listOne, listTwo) => {
+  let tail = listOne.head;
+  let current1 = listOne.head.next;
+  let current2 = listTwo.head;
+  let count = 0;
+
+  while(current1 && current2){
+    if(count % 2 === 0){
+      tail.next = current2;
+      current2 = current2.next;
     } else {
-      ableToZipOne = false;
+      tail.next = current1;
+      current1 = current1.next;
     }
-    if (currentTwo.next) {
-      currentTwo = currentTwo.next;
-    } else {
-      ableToZipTwo = false;
-    }
+    tail = tail.next;
+    count += 1;
   }
-  return zippedList;
-}
+
+  if(current1){
+    tail.next = current1;
+  } else if(current2){
+    tail.next = current2;
+  }
+
+  return listOne;
+};
 
 console.log('---- zip lists below ----');
 
@@ -82,6 +109,5 @@ list2.insert(8);
 console.log(zipLists(list1, list2).toString());
 console.log(list1.toString());
 console.log(list2.toString());
-console.log();
 
 module.exports = { zipLists };
